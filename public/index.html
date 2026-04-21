@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Natural Room · Nordic Nest | Home decor & interior design</title>
+    <!-- SEO meta -->
+    <meta name="description" content="The Natural Room – Nordic interior design studio. Timeless home inspiration, curated collections and professional design services.">
+    <!-- Google Fonts + Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ----- RESET & VARIABLES ----- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            background-color: #F3F1EC;
+            color: #2C2C2C;
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        h1, h2, h3, h4, .logo, .nav-links a, .btn {
+            font-family: 'Baskervville', serif;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+        }
+        h1 { font-size: 3rem; margin-bottom: 1.5rem; }
+        h2 { font-size: 2.2rem; margin-bottom: 1.5rem; border-bottom: 1px solid rgba(168,140,109,0.2); padding-bottom: 0.5rem; }
+        h3 { font-size: 1.5rem; margin: 1rem 0 0.5rem; color: #A88C6D; }
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+        /* ----- GRID & LAYOUT ----- */
+        .grid-3, .grid-4, .grid-2 {
+            display: grid;
+            gap: 2rem;
+        }
+        .grid-3 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+        .grid-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+        
+        /* ----- COLORS & TIMELESS STYLE ----- */
+        .btn {
+            display: inline-block;
+            background: #A88C6D;
+            color: #F3F1EC;
+            padding: 0.8rem 2rem;
+            margin: 0.5rem 0.5rem 0.5rem 0;
+            border: 1px solid transparent;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            border-radius: 0;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            cursor: pointer;
+        }
+        .btn-outline {
+            background: transparent;
+            border: 1px solid #A88C6D;
+            color: #2C2C2C;
+        }
+        .btn:hover {
+            background: #2C2C2C;
+            color: #F3F1EC;
+            border-color: #2C2C2C;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+        .card {
+            background: white;
+            padding: 1.5rem 1rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(168,140,109,0.1);
+        }
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+            border-color: #A88C6D;
+        }
+        /* images */
+        img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        .img-zoom {
+            overflow: hidden;
+        }
+        .img-zoom:hover img {
+            transform: scale(1.05);
+        }
+        /* ----- HEADER / NAV ----- */
+        header {
+            background: #F3F1EC;
+            border-bottom: 1px solid rgba(168,140,109,0.2);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 1.5rem;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+        .logo a {
+            font-size: 1.9rem;
+            text-decoration: none;
+            color: #2C2C2C;
+            letter-spacing: 2px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #2C2C2C;
+            font-size: 1.1rem;
+            transition: color 0.2s;
+            cursor: pointer;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            color: #A88C6D;
+        }
+        .hamburger {
+            display: none;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+        /* mobile menu */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                gap: 0.5rem;
+                background: #F3F1EC;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                padding: 1.5rem;
+                border-bottom: 1px solid #A88C6D;
+                z-index: 9;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .hamburger {
+                display: block;
+            }
+        }
+        /* sections fade-up (scroll triggered) */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* hero */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.1)), url('assets/img/beutiful-living-room.jpeg') center/cover no-repeat;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            color: #F3F1EC;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        .hero-content { padding: 2rem; background: rgba(44,44,44,0.3); backdrop-filter: blur(2px); }
+        .hero h1 { font-size: 3.5rem; line-height: 1.2; }
+        /* breadcrumb */
+        .breadcrumb {
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+            color: #A88C6D;
+        }
+        .breadcrumb a { 
+            color: #2C2C2C; 
+            text-decoration: none;
+            border-bottom: 1px dotted #A88C6D;
+            cursor: pointer;
+        }
+        .breadcrumb a:hover { color: #A88C6D; }
+        /* footer + newsletter */
+        .newsletter {
+            background: #2C2C2C;
+            color: #F3F1EC;
+            padding: 3rem 1.5rem;
+            text-align: center;
+        }
+        .newsletter form {
+            max-width: 400px;
+            margin: 1.5rem auto;
+            display: flex;
+            gap: 0.5rem;
+        }
+        .newsletter input[type="email"] {
+            flex: 1;
+            padding: 0.8rem;
+            border: none;
+            background: #F3F1EC;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .footer-bottom {
+            background: #2C2C2C;
+            color: #F3F1EC;
+            text-align: center;
+            padding: 1.5rem;
+            border-top: 1px solid #A88C6D;
+        }
+        .footer-bottom a { 
+            color: #F3F1EC; 
+            margin: 0 0.5rem; 
+            text-decoration: none; 
+            border-bottom: 1px dotted #A88C6D;
+            cursor: pointer;
+        }
+        .footer-bottom a:hover { color: #A88C6D; }
+        /* cookie popup */
+        .cookie-popup {
+            position: fixed;
+            bottom: 1rem;
+            left: 1rem;
+            right: 1rem;
+            max-width: 400px;
+            background: #2C2C2C;
+            color: #F3F1EC;
+            padding: 1.2rem 1.5rem;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+            z-index: 999;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1rem;
+            border-left: 5px solid #A88C6D;
+            transition: opacity 0.3s;
+        }
+        .cookie-popup.hidden { display: none; }
+        .cookie-btn {
+            background: #A88C6D;
+            border: none;
+            color: #2C2C2C;
+            padding: 0.5rem 1.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            margin-left: auto;
+        }
+        /* value icons */
+        .value-icon { font-size: 2.5rem; color: #A88C6D; margin-bottom: 1rem; }
+        /* process steps */
+        .step { display: flex; gap: 1rem; align-items: flex-start; margin: 1.5rem 0; }
+        .step-number { background: #A88C6D; color: #F3F1EC; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.3rem; }
+        /* form */
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            background: white;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .contact-form button { border: none; cursor: pointer; }
+        /* page sections */
+        .page {
+            display: none;
+        }
+        .page.active-page {
+            display: block;
+        }
+        /* blog post meta */
+        .blog-meta { color: #A88C6D; font-size: 0.9rem; margin: 0.5rem 0; }
+        /* blog images */
+        #home-page .card.img-zoom img,
+        #blog-page .card.img-zoom img {
+            aspect-ratio: 16 / 10;
+            object-fit: cover;
+        }
+        /* services page title alignment */
+        .services-title-wrap {
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+        }
+        .services-title-wrap h1 {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- COOKIE POPUP -->
+    <div id="cookie-popup" class="cookie-popup">
+        <i class="fa-solid fa-cookie-bite" style="color:#A88C6D; font-size:1.8rem;"></i>
+        <span style="flex:1;">We use cookies to enhance your experience. By continuing you agree.</span>
+        <button id="cookie-accept" class="cookie-btn">Accept</button>
+    </div>
+
+    <!-- HEADER -->
+    <header>
+        <nav class="navbar">
+            <div class="logo"><a onclick="navigateTo('home')">The Natural Room</a></div>
+            <div class="hamburger"><i class="fa-solid fa-bars"></i></div>
+            <div class="nav-links">
+                <a onclick="navigateTo('home')" class="nav-link">Home</a>
+                <a onclick="navigateTo('about')" class="nav-link">About</a>
+                <a onclick="navigateTo('services')" class="nav-link">Services</a>
+                <a onclick="navigateTo('blog')" class="nav-link">Blog</a>
+                <a onclick="navigateTo('contact')" class="nav-link">Contact</a>
+                <a onclick="navigateTo('privacy')" class="nav-link">Privacy</a>
+                <a onclick="navigateTo('terms')" class="nav-link">Terms</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- HOME PAGE -->
+        <section id="home-page" class="page active-page">
+            <!-- Hero -->
+            <div class="hero">
+                <div class="container hero-content fade-up">
+                    <h1>Nordic calm,<br>timeless home</h1>
+                    <p style="font-size:1.3rem; max-width:600px;">Interior design & inspiration rooted in nature.</p>
+                    <a onclick="navigateTo('services')" class="btn">Explore services</a>
+                    <a onclick="navigateTo('contact')" class="btn btn-outline">Book a consultation</a>
+                </div>
+            </div>
+            
+            <!-- Curated collections -->
+            <div class="container">
+                <h2 class="fade-up">Curated collections</h2>
+                <div class="grid-3">
+                    <div class="card img-zoom fade-up">
+                        <img src="assets/img/plant-sofa.jpg" alt="Nordic living room with light wood">
+                        <h3>Nordic living</h3>
+                        <p>Hygge textures, neutral layers, warm minimalism.</p>
+                    </div>
+                    <div class="card img-zoom fade-up">
+                        <img src="assets/img/bedrooms1.jpg" alt="Minimal bedroom with linen">
+                        <h3>Serene bedrooms</h3>
+                        <p>Natural fibres, muted tones, restful corners.</p>
+                    </div>
+                    <div class="card img-zoom fade-up">
+                        <img src="assets/img/plants.jpg" alt="Home office with plants">
+                        <h3>Workspace calm</h3>
+                        <p>Functional beauty for focused days.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Services preview -->
+            <div class="container">
+                <h2 class="fade-up">What we offer</h2>
+                <div class="grid-3">
+                    <div class="card fade-up"><i class="fa-solid fa-pen-ruler value-icon"></i><h3>Full design</h3><p>Concept to completion, Nordic soul.</p></div>
+                    <div class="card fade-up"><i class="fa-solid fa-couch value-icon"></i><h3>Room makeover</h3><p>Refresh one room with expert guidance.</p></div>
+                    <div class="card fade-up"><i class="fa-solid fa-compass value-icon"></i><h3>Colour & material</h3><p>Palette workshops tailored to you.</p></div>
+                </div>
+                <div style="text-align:center; margin:2rem 0;"><a onclick="navigateTo('services')" class="btn">View all services →</a></div>
+            </div>
+            
+            <!-- Blog preview -->
+            <div class="container">
+                <h2 class="fade-up">From the journal</h2>
+                <div class="grid-3">
+                    <div class="card fade-up img-zoom">
+                        <img src="assets/img/wall-1.jpg" alt="design principles sketch">
+                        <h3>5 laws of Nordic design</h3>
+                        <p class="blog-meta">Design principles · 5 min read</p>
+                        <p>Balance, light, natural materials...</p>
+                        <a onclick="navigateTo('blog')" class="btn-outline btn" style="margin:1rem 0 0;">Read more</a>
+                    </div>
+                    <div class="card fade-up img-zoom">
+                        <img src="assets/img/wooden%20stool.jpeg" alt="sustainable wood">
+                        <h3>Sustainable materials guide</h3>
+                        <p class="blog-meta">Eco design · 7 min read</p>
+                        <p>Linoleum, wool, cork – the new staples.</p>
+                        <a onclick="navigateTo('blog')" class="btn-outline btn" style="margin:1rem 0 0;">Read more</a>
+                    </div>
+                    <div class="card fade-up img-zoom">
+                        <img src="assets/img/side%20lamps.jpg" alt="small apartment">
+                        <h3>Small spaces, big soul</h3>
+                        <p class="blog-meta">Space saving · 4 min read</p>
+                        <p>Space-saving that feels expansive.</p>
+                        <a onclick="navigateTo('blog')" class="btn-outline btn" style="margin:1rem 0 0;">Read more</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- About preview -->
+            <div class="container grid-2" style="align-items:center;">
+                <div class="fade-up">
+                    <h2>Our story</h2>
+                    <p>The Natural Room was born from a love of Nordic simplicity—quiet, functional, beautiful. We believe every room should breathe.</p>
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin:2rem 0;">
+                        <div><i class="fa-solid fa-snowflake value-icon"></i> <h4>Slow living</h4></div>
+                        <div><i class="fa-solid fa-leaf value-icon"></i> <h4>Eco conscious</h4></div>
+                    </div>
+                    <a onclick="navigateTo('about')" class="btn">More about us</a>
+                </div>
+                <div class="img-zoom fade-up">
+                    <img src="assets/img/mirrors.jpg" alt="design studio interior">
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT PAGE -->
+        <section id="about-page" class="page">
+            <div class="container">
+                <div class="breadcrumb"><a onclick="navigateTo('home')">Home</a> / About</div>
+                <h1 class="fade-up">The studio</h1>
+                <div class="grid-2 fade-up">
+                    <div class="img-zoom">
+                        <img src="assets/img/bedroom.jpg" alt="designers at work">
+                    </div>
+                    <div>
+                        <p style="font-size:1.2rem; margin-bottom:1.5rem;">Founded in Oslo in 2015, we translate Nordic nature into interiors. Every project begins with light, materials, and ritual. We value slowness, craftsmanship, and honesty.</p>
+                        <h3>Our values</h3>
+                        <div class="grid-2" style="margin-top:1.5rem;">
+                            <div><i class="fa-solid fa-star value-icon"></i> <h4>Authenticity</h4></div>
+                            <div><i class="fa-solid fa-heart value-icon"></i> <h4>Simplicity</h4></div>
+                            <div><i class="fa-solid fa-sun value-icon"></i> <h4>Lightness</h4></div>
+                            <div><i class="fa-solid fa-tree value-icon"></i> <h4>Nature</h4></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICES PAGE -->
+        <section id="services-page" class="page">
+            <div class="container">
+                <div class="breadcrumb"><a onclick="navigateTo('home')">Home</a> / Services</div>
+                <div class="services-title-wrap">
+                    <h1>Design services</h1>
+                </div>
+                
+                <!-- Process steps -->
+                <div class="grid-2" style="margin-bottom:3rem;">
+                    <div>
+                        <h2 class="fade-up">Our process</h2>
+                        <div class="step fade-up">
+                            <span class="step-number">1</span>
+                            <div><strong>Discover</strong> – We listen to your needs and analyze your space.</div>
+                        </div>
+                        <div class="step fade-up">
+                            <span class="step-number">2</span>
+                            <div><strong>Concept</strong> – Moodboards, material selections, and sketches.</div>
+                        </div>
+                        <div class="step fade-up">
+                            <span class="step-number">3</span>
+                            <div><strong>Refine</strong> – Detailed planning and budgeting.</div>
+                        </div>
+                        <div class="step fade-up">
+                            <span class="step-number">4</span>
+                            <div><strong>Implement</strong> – Project management & final styling.</div>
+                        </div>
+                    </div>
+                    <div class="img-zoom fade-up">
+                        <img src="assets/img/plants-2.jpg" alt="consultation meeting">
+                    </div>
+                </div>
+                
+                <!-- Service offerings -->
+                <h2 class="fade-up">Services we offer</h2>
+                <div class="grid-3 fade-up">
+                    <div class="card">
+                        <i class="fa-solid fa-building value-icon"></i>
+                        <h3>Residential design</h3>
+                        <p>Full home interiors tailored to your lifestyle.</p>
+                    </div>
+                    <div class="card">
+                        <i class="fa-solid fa-hand-peace value-icon"></i>
+                        <h3>Home staging</h3>
+                        <p>Prepare your property for sale with Nordic appeal.</p>
+                    </div>
+                    <div class="card">
+                        <i class="fa-solid fa-pen-to-square value-icon"></i>
+                        <h3>Colour workshop</h3>
+                        <p>Half-day sessions to find your perfect palette.</p>
+                    </div>
+                    <div class="card">
+                        <i class="fa-solid fa-clock value-icon"></i>
+                        <h3>Hourly consultation</h3>
+                        <p>Expert advice for specific design questions.</p>
+                    </div>
+                    <div class="card">
+                        <i class="fa-solid fa-map value-icon"></i>
+                        <h3>Space planning</h3>
+                        <p>Optimize your layout for flow and function.</p>
+                    </div>
+                    <div class="card">
+                        <i class="fa-solid fa-gem value-icon"></i>
+                        <h3>Premium packages</h3>
+                        <p>Full-service luxury design management.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BLOG PAGE -->
+        <section id="blog-page" class="page">
+            <div class="container">
+                <div class="breadcrumb"><a onclick="navigateTo('home')">Home</a> / Blog</div>
+                <h1>Nordic journal</h1>
+                <div class="grid-3">
+                    <div class="card img-zoom">
+                        <img src="assets/img/bathroom-decor.jpg" alt="design principles">
+                        <h3>5 laws of Nordic design</h3>
+                        <p class="blog-meta">March 10, 2025 · 5 min read</p>
+                        <p>Balance, light, natural materials, functionality, and craftsmanship.</p>
+                    </div>
+                    <div class="card img-zoom">
+                        <img src="assets/img/bathroom-decor3.jpg" alt="sustainable materials">
+                        <h3>Sustainable materials guide</h3>
+                        <p class="blog-meta">February 28, 2025 · 7 min read</p>
+                        <p>Wool, linen, clay, cork – the essentials for eco-friendly homes.</p>
+                    </div>
+                    <div class="card img-zoom">
+                        <img src="assets/img/bathroom-decor5.jpg" alt="small spaces">
+                        <h3>Small spaces, big soul</h3>
+                        <p class="blog-meta">February 15, 2025 · 4 min read</p>
+                        <p>Space-saving hacks that feel expansive and calm.</p>
+                    </div>
+                    <div class="card img-zoom">
+                        <img src="assets/img/bedroom-2.jpg" alt="lighting guide">
+                        <h3>Layered lighting for long winters</h3>
+                        <p class="blog-meta">January 30, 2025 · 6 min read</p>
+                        <p>Ambient, task, and accent lighting for Nordic homes.</p>
+                    </div>
+                    <div class="card img-zoom">
+                        <img src="assets/img/bedroom-3.jpg" alt="textile guide">
+                        <h3>Nordic textile traditions</h3>
+                        <p class="blog-meta">January 12, 2025 · 5 min read</p>
+                        <p>From wool blankets to linen curtains.</p>
+                    </div>
+                    <div class="card img-zoom">
+                        <img src="assets/img/bedroom-5.jpg" alt="home office">
+                        <h3>WFH Nordic style</h3>
+                        <p class="blog-meta">December 20, 2024 · 4 min read</p>
+                        <p>Create a productive home office with natural elements.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT PAGE -->
+        <section id="contact-page" class="page">
+            <div class="container">
+                <div class="breadcrumb"><a onclick="navigateTo('home')">Home</a> / Contact</div>
+                <h1>Let's talk</h1>
+                <div class="grid-2">
+                    <div>
+                        <form id="demoContactForm" class="contact-form">
+                            <input type="text" name="name" placeholder="Your name" required>
+                            <input type="email" name="email" placeholder="Email address" required>
+                            <input type="text" name="subject" placeholder="Subject">
+                            <textarea name="message" rows="5" placeholder="Tell us about your space..."></textarea>
+                            <button type="submit" class="btn">Send message</button>
+                        </form>
+                    </div>
+                    <div class="img-zoom">
+                        <img src="assets/img/pillow.jpg" alt="contact studio">
+                        <div style="margin-top:2rem;">
+                            <p><i class="fa-solid fa-envelope value-icon" style="font-size:1.2rem;"></i> hello@thenaturalroom.site</p>
+                            <p><i class="fa-solid fa-phone value-icon" style="font-size:1.2rem;"></i> +47 123 45 678</p>
+                            <p><i class="fa-solid fa-location-dot value-icon" style="font-size:1.2rem;"></i> Oslo, Norway</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRIVACY PAGE -->
+        <section id="privacy-page" class="page">
+            <div class="container">
+                <div class="breadcrumb"><a onclick="navigateTo('home')">Home</a> / Privacy Policy</div>
+                <h1>Privacy Policy</h1>
+                <div class="card" style="padding:2rem;">
+                    <p><strong>Last updated:</strong> March 9, 2026</p>
+                    <p>The Natural Room ("we," "us," or "our") respects your privacy and is committed to protecting your personal information. This Privacy Policy explains what information we collect through this website, how we use it, and what rights you may have.</p>
+
+                    <h3>1. Information we collect</h3>
+                    <p>We may collect the following categories of information:</p>
+                    <p><strong>Information you provide:</strong> name, email address, and message details submitted through contact or newsletter forms.</p>
+                    <p><strong>Technical information:</strong> device type, browser type, IP address, pages visited, and approximate location derived from IP address.</p>
+                    <p><strong>Cookie data:</strong> basic preference and analytics data where enabled.</p>
+
+                    <h3>2. How we use information</h3>
+                    <p>We use information to respond to inquiries, provide requested services, improve site performance, monitor website usage, and maintain website security.</p>
+
+                    <h3>3. Cookies and similar technologies</h3>
+                    <p>We use cookies to support core site functionality and enhance user experience. You can control or delete cookies in your browser settings. Disabling cookies may affect some features.</p>
+
+                    <h3>4. Data sharing</h3>
+                    <p>We do not sell personal information. We may share limited information with service providers who support hosting, analytics, or communications, and only as needed to operate the site.</p>
+
+                    <h3>5. Data retention</h3>
+                    <p>We retain personal information only for as long as reasonably necessary for the purposes described in this policy, unless a longer period is required by law.</p>
+
+                    <h3>6. Your rights</h3>
+                    <p>Subject to applicable law, you may request access, correction, deletion, or restriction of your personal information, and you may object to certain processing activities.</p>
+
+                    <h3>7. Security</h3>
+                    <p>We apply reasonable technical and organizational safeguards to protect personal information. No method of transmission or storage is guaranteed to be fully secure.</p>
+
+                    <h3>8. Third-party links</h3>
+                    <p>This website may contain links to third-party websites. We are not responsible for their privacy practices or content.</p>
+
+                    <h3>9. Changes to this policy</h3>
+                    <p>We may update this Privacy Policy from time to time. The updated version will be posted on this page with a revised "Last updated" date.</p>
+
+                    <h3>10. Contact</h3>
+                    <p>For privacy-related requests, contact: <strong>hello@thenaturalroom.site</strong>.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- TERMS PAGE -->
+        <section id="terms-page" class="page">
+            <div class="container">
+                <div class="breadcrumb"><a onclick="navigateTo('home')">Home</a> / Terms & Conditions</div>
+                <h1>Terms & Conditions</h1>
+                <div class="card" style="padding:2rem;">
+                    <p><strong>Effective date:</strong> March 9, 2026</p>
+                    <p>These Terms & Conditions ("Terms") govern your use of The Natural Room website. By accessing or using this site, you agree to these Terms.</p>
+
+                    <h3>1. Use of the website</h3>
+                    <p>You agree to use this website only for lawful purposes and in a way that does not infringe the rights of, restrict, or inhibit anyone else's use of the site.</p>
+
+                    <h3>2. Services and information</h3>
+                    <p>Content on this website is provided for general information and marketing purposes. Service descriptions are illustrative and may change without notice.</p>
+
+                    <h3>3. Intellectual property</h3>
+                    <p>All website content, including text, layout, branding, and locally hosted images, is owned by or licensed to The Natural Room and protected by applicable intellectual property laws.</p>
+
+                    <h3>4. Permitted and prohibited actions</h3>
+                    <p>You may view and download pages for personal, non-commercial use. You may not copy, republish, distribute, or modify site content for commercial purposes without prior written consent.</p>
+
+                    <h3>5. Third-party resources</h3>
+                    <p>Where third-party tools, links, or services are referenced, they are provided for convenience only. We do not endorse or accept responsibility for third-party content or practices.</p>
+
+                    <h3>6. Disclaimer</h3>
+                    <p>This website is provided on an "as is" and "as available" basis without warranties of any kind, express or implied, to the fullest extent permitted by law.</p>
+
+                    <h3>7. Limitation of liability</h3>
+                    <p>To the fullest extent permitted by law, The Natural Room will not be liable for any indirect, incidental, special, or consequential damages arising from use of, or inability to use, this website.</p>
+
+                    <h3>8. Indemnity</h3>
+                    <p>You agree to indemnify and hold harmless The Natural Room from claims, damages, and expenses arising from your misuse of the website or breach of these Terms.</p>
+
+                    <h3>9. Governing law</h3>
+                    <p>These Terms are governed by the laws applicable in Norway, without regard to conflict of law principles.</p>
+
+                    <h3>10. Changes to these Terms</h3>
+                    <p>We may update these Terms at any time by posting a revised version on this page. Continued use of the site after changes are posted constitutes acceptance of the updated Terms.</p>
+
+                    <h3>11. Contact</h3>
+                    <p>For questions about these Terms, contact: <strong>hello@thenaturalroom.site</strong>.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- NEWSLETTER + FOOTER -->
+    <footer>
+        <div class="newsletter">
+            <h3 style="color:#F3F1EC;">Subscribe to Nordic whispers</h3>
+            <p style="margin-bottom:1rem;">Get inspiration and design tips monthly.</p>
+            <form id="newsletterForm">
+                <input type="email" placeholder="Your email address" required>
+                <button type="submit" class="btn" style="margin:0;">Subscribe</button>
+            </form>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2025 The Natural Room · thenaturalroom.site</span>
+            <a onclick="navigateTo('privacy')">Privacy</a> · 
+            <a onclick="navigateTo('terms')">Terms</a>
+        </div>
+    </footer>
+
+    <script>
+        (function() {
+            // Navigation function - must be global
+            window.navigateTo = function(pageId) {
+                // Hide all pages
+                document.querySelectorAll('.page').forEach(page => {
+                    page.classList.remove('active-page');
+                });
+                
+                // Show selected page
+                const targetPage = document.getElementById(pageId + '-page');
+                if (targetPage) {
+                    targetPage.classList.add('active-page');
+                }
+                
+                // Update active nav link
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.remove('active');
+                    if (link.textContent.toLowerCase() === pageId || 
+                        (pageId === 'home' && link.textContent === 'Home')) {
+                        link.classList.add('active');
+                    }
+                });
+                
+                // Scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                
+                // Close mobile menu if open
+                document.querySelector('.nav-links').classList.remove('active');
+            };
+
+            // Hamburger menu
+            const hamburger = document.querySelector('.hamburger');
+            const nav = document.querySelector('.nav-links');
+            
+            hamburger.addEventListener('click', (e) => {
+                nav.classList.toggle('active');
+                e.stopPropagation();
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!nav.contains(e.target) && !hamburger.contains(e.target)) {
+                    nav.classList.remove('active');
+                }
+            });
+
+            // Cookie popup
+            const cookiePopup = document.getElementById('cookie-popup');
+            const acceptBtn = document.getElementById('cookie-accept');
+            
+            if (!localStorage.getItem('cookieAccepted')) {
+                cookiePopup.classList.remove('hidden');
+            } else {
+                cookiePopup.classList.add('hidden');
+            }
+            
+            acceptBtn.addEventListener('click', () => {
+                localStorage.setItem('cookieAccepted', 'true');
+                cookiePopup.classList.add('hidden');
+            });
+
+            // Scroll fade-up observer
+            const fadeElements = document.querySelectorAll('.fade-up');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.2, rootMargin: '0px 0px -50px 0px' });
+            
+            fadeElements.forEach(el => observer.observe(el));
+
+            // Contact form validation
+            const contactForm = document.getElementById('demoContactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const name = contactForm.querySelector('input[name="name"]').value;
+                    const email = contactForm.querySelector('input[name="email"]').value;
+                    const message = contactForm.querySelector('textarea').value;
+                    
+                    if (name && email && message) {
+                        alert('✨ Thank you for reaching out! This is a demo - we would respond within 24h.');
+                        contactForm.reset();
+                    } else {
+                        alert('Please fill in all required fields.');
+                    }
+                });
+            }
+
+            // Newsletter form
+            const newsletterForm = document.getElementById('newsletterForm');
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const email = newsletterForm.querySelector('input[type="email"]').value;
+                    if (email) {
+                        alert('📬 Demo subscription received! Thank you for joining The Natural Room.');
+                        newsletterForm.reset();
+                    }
+                });
+            }
+
+            // Set default page if none active
+            if (!document.querySelector('.page.active-page')) {
+                document.getElementById('home-page').classList.add('active-page');
+            }
+        })();
+    </script>
+</body>
+</html>
